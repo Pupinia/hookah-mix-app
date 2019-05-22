@@ -1,23 +1,29 @@
 <template>
   <div class="add-mix container">
-    <h2 class="center-align indigo-text">Add New Mix Recipe</h2>
+    <h2 class="center-align indigo-text">Добавить новый микс</h2>
     <form @submit.prevent="addMix">
       <div class="field title">
-        <label for="title">Mix Title:</label>
+        <label for="title">Название микса:</label>
         <input type="text" name="title" v-model="title">
       </div>
       <div v-for="(ing, index) in ingredients" :key="index" class="field">
-        <label for="ingredient">Ingredient:</label>
+        <label for="ingredient">Ингредиент:</label>
         <input type="text" name="ingredient" v-model="ingredients[index]">
         <i class="material-icons delete" @click="deleteIng(ing)">delete</i>
       </div>
       <div class="field add-ingredient">
-        <label for="add-ingredient">Add an ingredient:</label>
-        <input type="text" name="add-ingredient" @keydown.enter.prevent="addIng" v-model="another">
+        <label for="add-ingredient">Добавить табак:</label>
+        <input
+          type="text"
+          name="add-ingredient"
+          @keydown.enter.prevent="addIng"
+          v-model="another"
+          placeholder="Нажмите enter что бы добавить"
+        >
       </div>
       <div class="field center-align">
         <p v-if="feedback" class="red-text">{{feedback}}</p>
-        <button class="btn pink">Add mix</button>
+        <button class="btn pink">Добавить микс</button>
       </div>
     </form>
   </div>
@@ -60,7 +66,7 @@ export default {
             console.log(err);
           });
       } else {
-        this.feedback = "You must enter a smoothie title";
+        this.feedback = "Введите название микса";
       }
     },
     addIng() {
@@ -69,7 +75,7 @@ export default {
         this.another = null;
         this.feedback = null;
       } else {
-        this.feedback = "You must enter value to add an ingredient";
+        this.feedback = "Введите название ингредиента";
       }
     },
     deleteIng(ing) {

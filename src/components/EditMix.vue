@@ -3,21 +3,21 @@
     <h2>Edit {{mix.title}}</h2>
     <form @submit.prevent="editMix">
       <div class="field title">
-        <label for="title">Mix Title:</label>
+        <label for="title">Название микса::</label>
         <input type="text" name="title" v-model="mix.title">
       </div>
       <div v-for="(ing, index) in mix.ingredients" :key="index" class="field">
-        <label for="ingredient">Ingredient:</label>
+        <label for="ingredient">Ингредиент:</label>
         <input type="text" name="ingredient" v-model="mix.ingredients[index]">
         <i class="material-icons delete" @click="deleteIng(ing)">delete</i>
       </div>
       <div class="field edit-ingredient">
-        <label for="edit-ingredient">Edit an ingredient:</label>
+        <label for="edit-ingredient">Изменить название:</label>
         <input type="text" name="edit-ingredient" @keydown.enter.prevent="addIng" v-model="another">
       </div>
       <div class="field center-align">
         <p v-if="feedback" class="red-text">{{feedback}}</p>
-        <button class="btn pink">Update mix</button>
+        <button class="btn pink">Обновить микс</button>
       </div>
     </form>
   </div>
@@ -59,7 +59,7 @@ export default {
             console.log(err);
           });
       } else {
-        this.feedback = "You must enter a smoothie title";
+        this.feedback = "Введите название микса";
       }
     },
     addIng() {
@@ -68,7 +68,7 @@ export default {
         this.another = null;
         this.feedback = null;
       } else {
-        this.feedback = "You must enter value to add an ingredient";
+        this.feedback = "Введите название ингредиента";
       }
     },
     deleteIng(ing) {
