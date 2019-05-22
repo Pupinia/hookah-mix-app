@@ -1,5 +1,7 @@
 # hookah-mixes
 
+Приложения для хранения рецептов миксов для кальяна :smoking:
+
 ## Project setup
 ```
 npm install
